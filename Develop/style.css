@@ -20,7 +20,7 @@ header {
 
 .description {
   white-space: pre-wrap;
-  color: blue;
+  color: black;
 }
 
 .time-block {
@@ -34,7 +34,7 @@ header {
 
 .hour {
   background-color: #ffffff;
-  color: hotpink;
+  color: black
   border-top: 1px dashed #000000;
 }
 

@@ -1,13 +1,13 @@
 
-var event = document.querySelector("textarea");
 
 
+//gets todays day and displays it like Monday, December 3
 var today = dayjs();
 $('#currentDay').text(today.format("dddd, MMMM D"));
 
-//don't forget to remove this from html and also here
+//I like having the time at the top so I'm leaving this
 var time = dayjs()
-$('#currentTime').text(time.format("HH  mm"));
+$('#currentTime').text(time.format("HH" + ":" + "mm"));
 
 
 
@@ -39,7 +39,14 @@ function displayTime() {
     
   }
 
-displayTime();
 
-
-
+  $(document).ready(function () {
+    
+    $(".saveBtn").on("click", function () {
+        var event = $(this).siblings(".description").val();
+        localStorage.setItem("event", event);
+        localStorage.getItem("event", event);   
+    })
+   
+})
+    displayTime();
