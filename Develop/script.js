@@ -11,7 +11,7 @@ $('#currentTime').text(time.format("HH" + ":" + "mm"));
 
 
 
-
+//adds class to the container depending on the time of day and if in the past, present or future
 function displayTime() {
   $( ".timeContainer" ).each(function() {
   var timeID = parseInt( $( this ).attr("id"));
@@ -39,14 +39,31 @@ function displayTime() {
     
   }
 
-
+//saves the typed event into local storage and then also saves input when refreshed
   $(document).ready(function () {
     
     $(".saveBtn").on("click", function () {
         var event = $(this).siblings(".description").val();
-        localStorage.setItem("event", event);
-        localStorage.getItem("event", event);   
+        var storedKey = $(this).parent().get(0).id;
+        localStorage.setItem(storedKey, event);     
+        console.log("this is event",  $(this).parent().get(0).id);
     })
+
+    for (var i = 9; i <= 17; i++) {
+      var savedEvent = localStorage.getItem(i);
+
+      if (savedEvent) {
+        var timeContainer = document.getElementById(i);
+        var textArea = timeContainer.querySelector("textarea");
+
+        textArea.value = savedEvent
+        
+      }
+      
+    }
    
 })
+
     displayTime();
+
+ 
